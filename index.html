@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namora comigo?</title>
+</head>
+<body>
+
+    <div id="conteudo">
+        <h1>Aceita Namorar comigo?</h1>
+        <button onclick="sim()">Sim</button>
+        <button onmouseover="desvia(this)" onclick="desvia()">Não</button>
+    </div>
+</body>
+
+<style>
+    #conteudo {
+        background: #ff7a7a;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        padding: 10px;
+        text-align: center;
+    }
+
+    button {
+        background: black;
+        color: white;
+        border: none;
+        padding: 10px;
+        width: 80px;
+        border-radius: 5px;
+    }
+</style>
+
+
+<script>
+    function sim() {
+        alert("Você aceitou namorar comigo!");
+    }
+
+    function _randomPosition(min, max) {
+        return `${Math.random() * (max - min) + min}%`
+    }
+
+    function desvia(btn) {
+        btn.style.position = 'absolute';
+        btn.style.bottom = _randomPosition(5, 80)
+        btn.style.left = _randomPosition(5, 80);
+    }
+</script>
+
+</html>
