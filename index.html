@@ -11,7 +11,9 @@
     <div id="conteudo">
       <h1>Aceita Namorar comigo?</h1>
       <button onclick="sim()">Sim</button>
-      <button onmouseover="desvia(this)" onclick="desvia(this)">Não</button>
+      <button onmouseover="changePosition(this)" onclick="changePosition(this)">
+        Não
+      </button>
     </div>
     <!-- Hidden audio element -->
     <div>
@@ -89,25 +91,24 @@
       startFireworks();
     }
 
-    function _randomPosition(min, max, excludedRanges) {
+    function _randomPosition(min, max, excludedRange) {
       let number;
       let isInExcludedRange = true;
 
       while (isInExcludedRange) {
         number = Math.random() * (max - min) + min;
-        isInExcludedRange = excludedRanges.some(
-          (range) => number >= range[0] && number <= range[1]
-        );
+        // Check if the number is within the excluded range (start and end)
+        isInExcludedRange =
+          number >= excludedRange[0] && number <= excludedRange[1];
       }
 
       return `${number}%`;
     }
 
-    function desvia(btn) {
+    function changePosition(btn) {
       btn.style.width = "100px";
       btn.style.position = "absolute";
       btn.style.bottom = _randomPosition(5, 80, [35, 60]);
-      console.log(btn.style.bottom);
       btn.style.left = _randomPosition(5, 80, []);
     }
 
